@@ -1,147 +1,155 @@
 import React, { useState } from 'react';
 import { SectionId, RealEstateProject } from '../types';
-import { Building2, TrendingUp, ShieldCheck, MapPin } from 'lucide-react';
+import { Building2, TrendingUp, ShieldCheck, MapPin, ChevronRight, Crown } from 'lucide-react';
 
 const SaudiInvest: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'residential' | 'commercial' | 'vision'>('residential');
+  const [hoveredProject, setHoveredProject] = useState<string | null>(null);
 
   const projects: RealEstateProject[] = [
     {
       id: '1',
-      title: 'Riyadh Gilded Heights',
-      location: 'King Abdullah District, Riyadh',
-      roi: '12-15%',
-      price: 'Start from $450k',
-      image: 'https://picsum.photos/seed/riyadh1/600/400',
-      tags: ['Luxury', 'Ready 2026']
+      title: 'The Mukaab View',
+      location: 'New Murabba, Riyadh',
+      roi: '15% Projected',
+      price: '$550k Start',
+      image: 'https://images.unsplash.com/photo-1512958789358-4dac0f0408c8?q=80&w=2070&auto=format&fit=crop',
+      tags: ['Vision 2030', 'Premium']
     },
     {
       id: '2',
-      title: 'Jeddah Seafront Villa',
-      location: 'North Corniche, Jeddah',
-      roi: '8-10%',
-      price: 'Start from $800k',
-      image: 'https://picsum.photos/seed/jeddah1/600/400',
-      tags: ['Tourism', 'Sea View']
+      title: 'Jeddah Central Loft',
+      location: 'Waterfront, Jeddah',
+      roi: '9-11% Yield',
+      price: '$420k Start',
+      image: 'https://images.unsplash.com/photo-1580203638180-3a4391611796?q=80&w=2069&auto=format&fit=crop',
+      tags: ['Coastal', 'Tourism']
     },
     {
       id: '3',
-      title: 'Neom The Line Unit',
-      location: 'Neom, Tabuk',
-      roi: '18% Projected',
-      price: 'Inquire',
-      image: 'https://picsum.photos/seed/neom1/600/400',
-      tags: ['Future City', 'High Growth']
+      title: 'Neom Oxagon Hub',
+      location: 'Oxagon, Neom',
+      roi: 'High Growth',
+      price: 'Inquire Only',
+      image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop',
+      tags: ['Future City', 'Tech']
     }
   ];
 
   return (
-    <section id={SectionId.SAUDI_INVEST} className="py-24 bg-gray-900 text-white relative overflow-hidden">
-      {/* Decorative Background Map Pattern (Abstract) */}
-      <div className="absolute inset-0 opacity-10 pointer-events-none" 
-           style={{backgroundImage: 'radial-gradient(#D4AF37 1px, transparent 1px)', backgroundSize: '30px 30px'}}>
-      </div>
+    <section id={SectionId.SAUDI_INVEST} className="py-32 bg-[#0B0F19] text-white relative overflow-hidden">
+      {/* Decorative Golden Glows */}
+      <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-brand-gold/5 rounded-full blur-[120px] pointer-events-none"></div>
+      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-brand-saudi/10 rounded-full blur-[100px] pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-4 relative z-10">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-16">
-          <div className="max-w-2xl">
-            <div className="inline-flex items-center space-x-2 text-brand-gold mb-4">
-              <MapPin size={18} />
-              <span className="uppercase tracking-widest text-sm font-bold">New Frontier</span>
+        
+        {/* Header Section */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-end mb-24">
+          <div>
+            <div className="inline-flex items-center space-x-2 text-brand-gold mb-6 bg-brand-gold/10 px-3 py-1 rounded-full border border-brand-gold/20">
+              <Crown size={16} />
+              <span className="uppercase tracking-widest text-xs font-bold">Heyo World Exclusive</span>
             </div>
-            <h2 className="font-display font-bold text-5xl md:text-6xl leading-tight">
-              Unlock the Kingdom.<br />
-              <span className="text-brand-gold">Invest in Saudi Arabia.</span>
+            <h2 className="font-display font-bold text-5xl md:text-7xl leading-[1.1] mb-6">
+              Invest in the <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-gold via-yellow-200 to-brand-gold">Kingdom's Future</span>
             </h2>
-            <p className="text-gray-400 mt-6 text-lg">
-              Heyo World is your exclusive gateway to high-yield real estate opportunities in the fastest growing G20 economy. 
-              Direct access to top-tier developers in Riyadh and Neom.
+            <p className="text-gray-400 text-lg leading-relaxed max-w-lg">
+              Saudi Arabia is the world's fastest-growing construction market. 
+              We provide end-to-end investment management for international investors targeting Riyadh and Vision 2030 Giga-projects.
             </p>
           </div>
-          
-          <div className="hidden md:block">
-             <div className="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/10 max-w-xs">
-                <div className="flex items-center gap-3 mb-2">
-                  <TrendingUp className="text-green-400" />
-                  <span className="font-bold">Market Insight</span>
-                </div>
-                <p className="text-sm text-gray-300">Riyadh real estate prices have surged 30% in the last 24 months due to HQ relocation mandates.</p>
+
+          <div className="grid grid-cols-2 gap-4">
+             <div className="bg-white/5 backdrop-blur-md p-6 rounded-2xl border border-white/10 hover:border-brand-gold/50 transition-colors">
+                <div className="text-brand-gold font-display font-bold text-4xl mb-2">12%</div>
+                <div className="text-sm text-gray-400">Avg. Rental Yield in Riyadh Premium Districts</div>
+             </div>
+             <div className="bg-white/5 backdrop-blur-md p-6 rounded-2xl border border-white/10 hover:border-brand-gold/50 transition-colors">
+                <div className="text-brand-gold font-display font-bold text-4xl mb-2">$1.1T</div>
+                <div className="text-sm text-gray-400">Planned Real Estate & Infrastructure Spend</div>
              </div>
           </div>
         </div>
 
-        {/* Features Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
-            <div className="p-6 border border-white/10 rounded-2xl hover:bg-white/5 transition-colors">
-                <Building2 className="text-brand-gold mb-4" size={32} />
-                <h3 className="text-xl font-bold mb-2">Vision 2030 Aligned</h3>
-                <p className="text-gray-400 text-sm">Properties selected for maximum appreciation based on government infrastructure spending.</p>
-            </div>
-            <div className="p-6 border border-white/10 rounded-2xl hover:bg-white/5 transition-colors">
-                <ShieldCheck className="text-brand-gold mb-4" size={32} />
-                <h3 className="text-xl font-bold mb-2">Secure Ownership</h3>
-                <p className="text-gray-400 text-sm">Full legal support for international investors to obtain Premium Residency through investment.</p>
-            </div>
-            <div className="p-6 border border-white/10 rounded-2xl hover:bg-white/5 transition-colors">
-                <TrendingUp className="text-brand-gold mb-4" size={32} />
-                <h3 className="text-xl font-bold mb-2">High Rental Yields</h3>
-                <p className="text-gray-400 text-sm">Targeting 8-12% annual yields in key districts with high expatriate demand.</p>
-            </div>
-        </div>
+        {/* Content Tabs & Gallery */}
+        <div className="flex flex-col lg:flex-row gap-12">
+            
+            {/* Left: Features */}
+            <div className="lg:w-1/3 space-y-6">
+                <div className="p-8 rounded-3xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all group">
+                    <div className="w-12 h-12 bg-brand-saudi/20 rounded-full flex items-center justify-center mb-4 group-hover:bg-brand-saudi text-brand-saudi group-hover:text-white transition-colors">
+                        <Building2 size={24} />
+                    </div>
+                    <h3 className="text-xl font-bold mb-2">Direct Developer Access</h3>
+                    <p className="text-gray-400 text-sm">Skip the middlemen. We partner directly with ROSHN, Red Sea Global, and private family offices.</p>
+                </div>
 
-        {/* Interactive Project Gallery */}
-        <div>
-            <div className="flex space-x-6 mb-8 border-b border-gray-700 pb-2 overflow-x-auto">
-                <button 
-                  onClick={() => setActiveTab('residential')}
-                  className={`pb-2 font-medium transition-colors whitespace-nowrap ${activeTab === 'residential' ? 'text-brand-gold border-b-2 border-brand-gold' : 'text-gray-400 hover:text-white'}`}
-                >
-                    Residential Luxury
-                </button>
-                <button 
-                  onClick={() => setActiveTab('commercial')}
-                  className={`pb-2 font-medium transition-colors whitespace-nowrap ${activeTab === 'commercial' ? 'text-brand-gold border-b-2 border-brand-gold' : 'text-gray-400 hover:text-white'}`}
-                >
-                    Commercial Offices
-                </button>
-                <button 
-                  onClick={() => setActiveTab('vision')}
-                  className={`pb-2 font-medium transition-colors whitespace-nowrap ${activeTab === 'vision' ? 'text-brand-gold border-b-2 border-brand-gold' : 'text-gray-400 hover:text-white'}`}
-                >
-                    Mega Projects (Giga)
-                </button>
+                <div className="p-8 rounded-3xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all group">
+                    <div className="w-12 h-12 bg-brand-gold/20 rounded-full flex items-center justify-center mb-4 group-hover:bg-brand-gold text-brand-gold group-hover:text-black transition-colors">
+                        <ShieldCheck size={24} />
+                    </div>
+                    <h3 className="text-xl font-bold mb-2">Golden Visa Support</h3>
+                    <p className="text-gray-400 text-sm">Comprehensive legal assistance for obtaining Premium Residency through property investment.</p>
+                </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                {projects.map((project) => (
-                    <div key={project.id} className="group relative rounded-xl overflow-hidden cursor-pointer">
-                        <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-all z-10"></div>
-                        <img 
-                            src={project.image} 
-                            alt={project.title} 
-                            className="w-full h-80 object-cover transform group-hover:scale-110 transition-transform duration-700"
-                        />
-                        <div className="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/90 to-transparent z-20">
-                            <div className="flex gap-2 mb-2">
+            {/* Right: Projects */}
+            <div className="lg:w-2/3">
+                <div className="flex items-center justify-between mb-8">
+                   <h3 className="font-bold text-2xl">Featured Opportunities</h3>
+                   <button className="text-brand-gold text-sm font-bold flex items-center hover:underline">
+                      View All Listings <ChevronRight size={16} />
+                   </button>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    {projects.map((project) => (
+                        <div 
+                            key={project.id} 
+                            className="relative group rounded-2xl overflow-hidden h-[400px] cursor-pointer border border-white/10"
+                            onMouseEnter={() => setHoveredProject(project.id)}
+                            onMouseLeave={() => setHoveredProject(null)}
+                        >
+                            <img 
+                                src={project.image} 
+                                alt={project.title} 
+                                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-90"></div>
+                            
+                            <div className="absolute top-4 left-4 flex gap-2">
                                 {project.tags.map(tag => (
-                                    <span key={tag} className="text-xs bg-brand-gold text-black px-2 py-1 rounded font-bold uppercase">{tag}</span>
+                                    <span key={tag} className="text-[10px] font-bold bg-brand-gold text-black px-2 py-1 rounded-md uppercase tracking-wider">
+                                        {tag}
+                                    </span>
                                 ))}
                             </div>
-                            <h3 className="text-2xl font-bold mb-1">{project.title}</h3>
-                            <p className="text-gray-300 text-sm mb-3">{project.location}</p>
-                            <div className="flex justify-between items-center border-t border-white/20 pt-3">
-                                <div>
-                                    <p className="text-xs text-gray-400">Est. ROI</p>
-                                    <p className="text-brand-gold font-bold">{project.roi}</p>
-                                </div>
-                                <div className="text-right">
-                                    <p className="text-xs text-gray-400">Investment</p>
-                                    <p className="font-bold">{project.price}</p>
+
+                            <div className={`absolute bottom-0 left-0 w-full p-6 transition-all duration-300 ${hoveredProject === project.id ? 'translate-y-0' : 'translate-y-4'}`}>
+                                <p className="text-brand-gold text-xs font-bold uppercase mb-1 flex items-center gap-1">
+                                    <MapPin size={10} /> {project.location}
+                                </p>
+                                <h4 className="text-xl font-bold mb-2">{project.title}</h4>
+                                
+                                <div className={`space-y-3 overflow-hidden transition-all duration-300 ${hoveredProject === project.id ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0'}`}>
+                                    <div className="flex justify-between text-sm border-t border-white/20 pt-3">
+                                        <span className="text-gray-400">Proj. ROI</span>
+                                        <span className="text-green-400 font-bold">{project.roi}</span>
+                                    </div>
+                                    <div className="flex justify-between text-sm">
+                                        <span className="text-gray-400">Entry</span>
+                                        <span className="font-bold">{project.price}</span>
+                                    </div>
+                                    <button className="w-full bg-white text-black font-bold py-2 rounded-lg text-sm hover:bg-brand-gold transition-colors">
+                                        Request Brochure
+                                    </button>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                ))}
+                    ))}
+                </div>
             </div>
         </div>
       </div>

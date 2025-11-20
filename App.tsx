@@ -1,8 +1,10 @@
+
 import React, { useState } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import BentoGrid from './components/BentoGrid';
 import SaudiInvest from './components/SaudiInvest';
+import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
 import GeminiChat from './components/GeminiChat';
 import { SectionId } from './types';
@@ -26,6 +28,7 @@ const App: React.FC = () => {
         <Hero scrollToSection={scrollToSection} />
         <BentoGrid />
         <SaudiInvest />
+        <ContactSection />
       </main>
 
       <Footer scrollToSection={scrollToSection} />

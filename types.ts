@@ -1,17 +1,9 @@
+
 export enum SectionId {
   HOME = 'home',
-  ABOUT = 'about',
-  SERVICES = 'services',
+  SERVICES = 'services', // Covers Visa, Study, Immigration
   SAUDI_INVEST = 'saudi-invest',
   CONTACT = 'contact'
-}
-
-export interface ServiceItem {
-  title: string;
-  description: string;
-  icon: React.ReactNode;
-  color: string;
-  colSpan?: string;
 }
 
 export interface RealEstateProject {
@@ -23,3 +15,13 @@ export interface RealEstateProject {
   image: string;
   tags: string[];
 }
+
+export type ContactTopic = 'visa' | 'study' | 'immigration' | 'invest' | 'other';
+
+export const CONTACT_EMAILS: Record<ContactTopic, string> = {
+  visa: 'visa@heyoworld.com',
+  study: 'studyabroad@heyoworld.com',
+  immigration: 'immigration@heyoworld.com',
+  invest: 'invest@heyoworld.com',
+  other: 'hello@heyoworld.com'
+};

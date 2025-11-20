@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-lang-zh="HeyoWorld - 助您开启全球梦想" data-lang-en="HeyoWorld - Unlock Your Global Dreams">HeyoWorld - 助您开启全球梦想</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght=300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #333;
+        }
+        /* Custom scroll-to-top button styling */
+        .scroll-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #3B82F6; /* Blue-500 */
+            color: white;
+            padding: 10px 15px;
+            border-radius: 9999px; /* Full rounded */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: none; /* Hidden by default */
+            cursor: pointer;
+            z-index: 1000;
+        }
+        /* Animation for hero section elements */
+        @keyframes fadeInFromBottom {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .animate-fade-in-up {
+            animation: fadeInFromBottom 0.8s ease-out forwards;
+        }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-400 { animation-delay: 0.4s; }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <header class="bg-white shadow-sm py-4 px-6 md:px-12 fixed w-full z-50">
+        <nav class="container mx-auto flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-blue-600 rounded-md p-2 hover:bg-blue-50 transition-colors">HeyoWorld</a>
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="#hero" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">
+                    <span data-lang-zh="首页" data-lang-en="Home">首页</span>
+                </a>
+                <a href="#visa" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">
+                    <span data-lang-zh="签证服务" data-lang-en="Visa Services">签证服务</span>
+                </a>
+                <a href="#immigration" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">
+                    <span data-lang-zh="移民规划" data-lang-en="Immigration Planning">移民规划</span>
+                </a>
+                <a href="#study-abroad" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">
+                    <span data-lang-zh="留学申请" data-lang-en="Study Abroad">留学申请</span>
+                </a>
+                <a href="#contact" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">
+                    <span data-lang-zh="联系我们" data-lang-en="Contact Us">联系我们</span>
+                </a>
+                <button id="lang-toggle" class="ml-4 bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm font-semibold hover:bg-blue-200 transition-colors">
+                    <span data-lang-zh="English" data-lang-en="中文">English</span>
+                </button>
+            </div>
+            <div class="flex items-center md:hidden">
+                <button id="lang-toggle-mobile" class="mr-4 bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm font-semibold hover:bg-blue-200 transition-colors">
+                    <span data-lang-zh="English" data-lang-en="中文">English</span>
+                </button>
+                <button id="mobile-menu-button" class="text-gray-700 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+            </div>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden fixed inset-0 bg-white bg-opacity-95 z-40 flex flex-col items-center justify-center space-y-6">
+            <button id="close-mobile-menu" class="absolute top-6 right-6 text-gray-700 focus:outline-none">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+            <a href="#hero" class="text-gray-800 text-2xl hover:text-blue-600 font-medium transition-colors" onclick="document.getElementById('mobile-menu').classList.add('hidden')">
+                <span data-lang-zh="首页" data-lang-en="Home">首页</span>
+            </a>
+            <a href="#visa" class="text-gray-800 text-2xl hover:text-blue-600 font-medium transition-colors" onclick="document.getElementById('mobile-menu').classList.add('hidden')">
+                <span data-lang-zh="签证服务" data-lang-en="Visa Services">签证服务</span>
+            </a>
+            <a href="#immigration" class="text-gray-800 text-2xl hover:text-blue-600 font-medium transition-colors" onclick="document.getElementById('mobile-menu').classList.add('hidden')">
+                <span data-lang-zh="移民规划" data-lang-en="Immigration Planning">移民规划</span>
+            </a>
+            <a href="#study-abroad" class="text-gray-800 text-2xl hover:text-blue-600 font-medium transition-colors" onclick="document.getElementById('mobile-menu').classList.add('hidden')">
+                <span data-lang-zh="留学申请" data-lang-en="Study Abroad">留学申请</span>
+            </a>
+            <a href="#contact" class="text-gray-800 text-2xl hover:text-blue-600 font-medium transition-colors" onclick="document.getElementById('mobile-menu').classList.add('hidden')">
+                <span data-lang-zh="联系我们" data-lang-en="Contact Us">联系我们</span>
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero" class="relative bg-cover bg-center h-screen flex items-center justify-center text-white"
+            style="background-image: url('hero.jpg');">
+            <div class="absolute inset-0 bg-black opacity-50"></div>
+            <div class="relative z-10 text-center px-4">
+                <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4 animate-fade-in-up">
+                    <span data-lang-zh="助您开启全球梦想" data-lang-en="Unlock Your Global Dreams">助您开启全球梦想</span>
+                </h1>
+                <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto animate-fade-in-up delay-200">
+                    <span data-lang-zh="专业签证、移民、留学服务，一站式解决您的海外规划。" data-lang-en="Professional visa, immigration, and study abroad services, your one-stop solution for overseas planning.">专业签证、移民、留学服务，一站式解决您的海外规划。</span>
+                </p>
+                <a href="#contact" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 animate-fade-in-up delay-400">
+                    <span data-lang-zh="立即咨询" data-lang-en="Contact Us Now">立即咨询</span>
+                </a>
+            </div>
+        </section>
+
+        <section id="services-overview" class="py-16 bg-white">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-12">
+                    <span data-lang-zh="我们的核心服务" data-lang-en="Our Core Services">我们的核心服务</span>
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-blue-50 p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1 flex flex-col justify-center items-center">
+                        <div class="text-blue-600 text-5xl mb-4">✈️</div> <h3 class="text-xl font-semibold text-gray-800 mb-2">
+                            <span data-lang-zh="签证服务" data-lang-en="Visa Services">签证服务</span>
+                        </h3>
+                        <p class="text-gray-600">
+                            <span data-lang-zh="专业办理各类签证，助您顺利出行。" data-lang-en="Professional handling of various visas to help you travel smoothly.">专业办理各类签证，助您顺利出行。</span>
+                        </p>
+                        <a href="#visa" class="mt-4 inline-block text-blue-600 hover:underline">
+                            <span data-lang-zh="了解更多 &rarr;" data-lang-en="Learn More &rarr;">了解更多 &rarr;</span>
+                        </a>
+                    </div>
+                    <div class="bg-green-50 p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1 flex flex-col justify-center items-center">
+                        <div class="text-green-600 text-5xl mb-4">🏡</div> <h3 class="text-xl font-semibold text-gray-800 mb-2">
+                            <span data-lang-zh="移民规划" data-lang-en="Immigration Planning">移民规划</span>
+                        </h3>
+                        <p class="text-gray-600">
+                            <span data-lang-zh="量身定制移民方案，开启全新生活。" data-lang-en="Tailored immigration solutions to start a new life.">量身定制移民方案，开启全新生活。</span>
+                        </p>
+                        <a href="#immigration" class="mt-4 inline-block text-blue-600 hover:underline">
+                            <span data-lang-zh="了解更多 &rarr;" data-lang-en="Learn More &rarr;">了解更多 &rarr;</span>
+                        </a>
+                    </div>
+                    <div class="bg-purple-50 p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1 flex flex-col justify-center items-center">
+                        <div class="text-purple-600 text-5xl mb-4">🎓</div> <h3 class="text-xl font-semibold text-gray-800 mb-2">
+                            <span data-lang-zh="留学申请" data-lang-en="Study Abroad Application">留学申请</span>
+                        </h3>
+                        <p class="text-gray-600">
+                            <span data-lang-zh="名校申请指导，助您圆梦海外学府。" data-lang-en="Elite school application guidance to help you achieve your overseas academic dreams.">名校申请指导，助您圆梦海外学府。</span>
+                        </p>
+                        <a href="#study-abroad" class="mt-4 inline-block text-blue-600 hover:underline">
+                            <span data-lang-zh="了解更多 &rarr;" data-lang-en="Learn More &rarr;">了解更多 &rarr;</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="visa" class="py-16 bg-gray-100">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 text-center mb-12">
+                    <span data-lang-zh="签证服务" data-lang-en="Visa Services">签证服务</span>
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden transform transition-transform duration-300 hover:scale-105 p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">
+                            🇺🇸 <span data-lang-zh="英国申请美签" data-lang-en="US Visa Application in UK">英国申请美签</span>
+                        </h3>
+                        <p class="text-gray-600 text-sm mb-4">
+                            <span data-lang-zh="为在英国的华人提供专业的美国签证申请指导，包括旅游、商务、学生等各类签证类型，确保申请流程顺畅高效。" data-lang-en="Providing professional US visa application guidance for Chinese residents in the UK, covering various visa types including tourist, business, and student visas, ensuring a smooth and efficient application process.">为在英国的华人提供专业的美国签证申请指导，包括旅游、商务、学生等各类签证类型，确保申请流程顺畅高效。</span>
+                        </p>
+                        <a href="#contact" class="text-blue-600 hover:underline font-medium">
+                            <span data-lang-zh="立即咨询 &rarr;" data-lang-en="Contact Us Now &rarr;">立即咨询 &rarr;</span>
+                        </a>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden transform transition-transform duration-300 hover:scale-105 p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">
+                            🇨🇦 <span data-lang-zh="加拿大签证" data-lang-en="Canada Visa">加拿大签证</span>
+                        </h3>
+                        <p class="text-gray-600 text-sm mb-4">
+                            <span data-lang-zh="提供加拿大旅游签、探亲签、学签、工签等全方位办理服务，助您轻松前往枫叶之国。" data-lang-en="Offering comprehensive services for Canadian tourist, family visit, study, and work visas, helping you easily travel to the Maple Leaf Country.">提供加拿大旅游签、探亲签、学签、工签等全方位办理服务，助您轻松前往枫叶之国。</span>
+                        </p>
+                        <a href="#contact" class="text-blue-600 hover:underline font-medium">
+                            <span data-lang-zh="立即咨询 &rarr;" data-lang-en="Contact Us Now &rarr;">立即咨询 &rarr;</span>
+                        </a>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden transform transition-transform duration-300 hover:scale-105 p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">
+                            🇪🇺 <span data-lang-zh="申根签证" data-lang-en="Schengen Visa">申根签证</span>
+                        </h3>
+                        <p class="text-gray-600 text-sm mb-4">
+                            <span data-lang-zh="专业办理申根国家签证，让您畅游欧洲，体验多元文化。" data-lang-en="Professional handling of Schengen country visas, allowing you to travel freely in Europe and experience diverse cultures.">专业办理申根国家签证，让您畅游欧洲，体验多元文化。</span>
+                        </p>
+                        <a href="#contact" class="text-blue-600 hover:underline font-medium">
+                            <span data-lang-zh="立即咨询 &rarr;" data-lang-en="Contact Us Now &rarr;">立即咨询 &rarr;</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="immigration" class="py-16 bg-white">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 text-center mb-12">
+                    <span data-lang-zh="移民规划" data-lang-en="Immigration Planning">移民规划</span>
+                </h2>
+                <div class="flex flex-col lg:flex-row items-center gap-12">
+                    <div class="lg:w-full">
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-4">
+                            🌍 <span data-lang-zh="投资入籍项目" data-lang-en="Citizenship by Investment Programs">投资入籍项目</span>
+                        </h3>
+                        <p class="text-gray-700 leading-relaxed mb-6">
+                            <span data-lang-zh="投资入籍（Citizenship by Investment, CBI）项目，是全球高净值人士获取第二公民身份的合法途径。通过对特定国家进行投资，例如购买房地产、投资商业项目或捐赠给国家基金，您和您的家人可以获得该国的公民身份和护照。" data-lang-en="Citizenship by Investment (CBI) programs are legitimate avenues for high-net-worth individuals worldwide to obtain a second citizenship. By investing in specific countries, such as purchasing real estate, investing in business projects, or donating to national funds, you and your family can acquire citizenship and a passport from that country.">投资入籍（Citizenship by Investment, CBI）项目，是全球高净值人士获取第二公民身份的合法途径。通过对特定国家进行投资，例如购买房地产、投资商业项目或捐赠给国家基金，您和您的家人可以获得该国的公民身份和护照。</span>
+                        </p>
+                        <ul class="list-disc list-inside text-gray-600 space-y-2 mb-6">
+                            <li><span class="font-medium text-gray-800" data-lang-zh="全球通行：" data-lang-en="Global Mobility:">全球通行：</span> <span data-lang-zh="获得免签或落地签多个国家的便利。" data-lang-en="Gain the convenience of visa-free or visa-on-arrival access to multiple countries.">获得免签或落地签多个国家的便利。</span></li>
+                            <li><span class="font-medium text-gray-800" data-lang-zh="税务优化：" data-lang-en="Tax Optimization:">税务优化：</span> <span data-lang-zh="享受更优惠的税务政策，合理规划资产。" data-lang-en="Enjoy more favorable tax policies and plan your assets wisely.">享受更优惠的税务政策，合理规划资产。</span></li>
+                            <li><span class="font-medium text-gray-800" data-lang-zh="子女教育：" data-lang-en="Children's Education:">子女教育：</span> <span data-lang-zh="为子女提供更优质的国际教育资源。" data-lang-en="Provide your children with access to higher quality international education resources.">为子女提供更优质的国际教育资源。</span></li>
+                            <li><span class="font-medium text-gray-800" data-lang-zh="资产配置：" data-lang-en="Asset Allocation:">资产配置：</span> <span data-lang-zh="实现全球资产多元化配置，规避风险。" data-lang-en="Achieve diversified global asset allocation and mitigate risks.">实现全球资产多元化配置，规避风险。</span></li>
+                            <li><span class="font-medium text-gray-800" data-lang-zh="生活品质：" data-lang-en="Quality of Life:">生活品质：</span> <span data-lang-zh="享受更稳定、更安全的生活环境。" data-lang-en="Enjoy a more stable and secure living environment.">享受更稳定、更安全的生活环境。</span></li>
+                        </ul>
+                        <p class="text-gray-700 leading-relaxed mb-6">
+                            <span data-lang-zh="我们提供专业的咨询和定制化服务，帮助您选择最适合的投资入籍项目，并全程协助您完成申请，确保您的移民之路顺利无忧。" data-lang-en="We provide professional consultation and customized services to help you choose the most suitable Citizenship by Investment program, and assist you throughout the application process, ensuring a smooth and worry-free immigration journey.">我们提供专业的咨询和定制化服务，帮助您选择最适合的投资入籍项目，并全程协助您完成申请，确保您的移民之路顺利无忧。</span>
+                        </p>
+                        <a href="#contact" class="inline-block bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105">
+                            <span data-lang-zh="了解投资入籍详情" data-lang-en="Learn More About CBI">了解投资入籍详情</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="study-abroad" class="py-16 bg-gray-100">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 text-center mb-12">
+                    <span data-lang-zh="留学申请" data-lang-en="Study Abroad Application">留学申请</span>
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden transform transition-transform duration-300 hover:scale-105 p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">
+                            🇬🇧 <span data-lang-zh="英国留学" data-lang-en="Study in UK">英国留学</span>
+                        </h3>
+                        <p class="text-gray-600 text-sm mb-4">
+                            <span data-lang-zh="世界顶尖学府，教育质量卓越，文化底蕴深厚，助您在英国开启学术之旅。" data-lang-en="World-class universities, excellent education quality, rich cultural heritage, helping you start your academic journey in the UK.">世界顶尖学府，教育质量卓越，文化底蕴深厚，助您在英国开启学术之旅。</span>
+                        </p>
+                        <a href="#contact" class="text-blue-600 hover:underline font-medium">
+                            <span data-lang-zh="立即咨询 &rarr;" data-lang-en="Contact Us Now &rarr;">立即咨询 &rarr;</span>
+                        </a>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden transform transition-transform duration-300 hover:scale-105 p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">
+                            🇺🇸 <span data-lang-zh="美国留学" data-lang-en="Study in USA">美国留学</span>
+                        </h3>
+                        <p class="text-gray-600 text-sm mb-4">
+                            <span data-lang-zh="全球教育强国，专业选择广泛，创新氛围浓厚，助您在美国实现学术梦想。" data-lang-en="A global education powerhouse with a wide range of majors and a strong innovative atmosphere, helping you achieve your academic dreams in the USA.">全球教育强国，专业选择广泛，创新氛围浓厚，助您在美国实现学术梦想。</span>
+                        </p>
+                        <a href="#contact" class="text-blue-600 hover:underline font-medium">
+                            <span data-lang-zh="立即咨询 &rarr;" data-lang-en="Contact Us Now &rarr;">立即咨询 &rarr;</span>
+                        </a>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden transform transition-transform duration-300 hover:scale-105 p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">
+                            🇨🇦 <span data-lang-zh="加拿大留学" data-lang-en="Study in Canada">加拿大留学</span>
+                        </h3>
+                        <p class="text-gray-600 text-sm mb-4">
+                            <span data-lang-zh="多元文化环境，高性价比教育，毕业后移民机会多，助您在加拿大开启新篇章。" data-lang-en="A multicultural environment, high-value education, and numerous post-graduation immigration opportunities, helping you start a new chapter in Canada.">多元文化环境，高性价比教育，毕业后移民机会多，助您在加拿大开启新篇章。</span>
+                        </p>
+                        <a href="#contact" class="text-blue-600 hover:underline font-medium">
+                            <span data-lang-zh="立即咨询 &rarr;" data-lang-en="Contact Us Now &rarr;">立即咨询 &rarr;</span>
+                        </a>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden transform transition-transform duration-300 hover:scale-105 p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">
+                            🇳🇿 <span data-lang-zh="新西兰留学" data-lang-en="Study in New Zealand">新西兰留学</span>
+                        </h3>
+                        <p class="text-gray-600 text-sm mb-4">
+                            <span data-lang-zh="纯净自然风光，高质量教育体系，独特的学习体验，助您在新西兰成就未来。" data-lang-en="Pristine natural landscapes, high-quality education system, and unique learning experiences, helping you achieve your future in New Zealand.">纯净自然风光，高质量教育体系，独特的学习体验，助您在新西兰成就未来。</span>
+                        </p>
+                        <a href="#contact" class="text-blue-600 hover:underline font-medium">
+                            <span data-lang-zh="立即咨询 &rarr;" data-lang-en="Contact Us Now &rarr;">立即咨询 &rarr;</span>
+                        </a>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden transform transition-transform duration-300 hover:scale-105 p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">
+                            🇦🇺 <span data-lang-zh="澳洲留学" data-lang-en="Study in Australia">澳洲留学</span>
+                        </h3>
+                        <p class="text-gray-600 text-sm mb-4">
+                            <span data-lang-zh="宜人气候，世界级大学，多元文化融合，助您在澳洲开启精彩留学生活。" data-lang-en="Pleasant climate, world-class universities, and diverse cultural integration, helping you start an exciting study abroad life in Australia.">宜人气候，世界级大学，多元文化融合，助您在澳洲开启精彩留学生活。</span>
+                        </p>
+                        <a href="#contact" class="text-blue-600 hover:underline font-medium">
+                            <span data-lang-zh="立即咨询 &rarr;" data-lang-en="Contact Us Now &rarr;">立即咨询 &rarr;</span>
+                        </a>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden transform transition-transform duration-300 hover:scale-105 p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">
+                            🌏 <span data-lang-zh="亚洲留学" data-lang-en="Study in Asia">亚洲留学</span>
+                        </h3>
+                        <p class="text-gray-600 text-sm mb-4">
+                            <span data-lang-zh="新兴留学热门地，文化体验独特，高性价比教育，助您在亚洲拓展国际视野。" data-lang-en="An emerging popular study destination with unique cultural experiences and high-value education, helping you broaden your international horizons in Asia.">新兴留学热门地，文化体验独特，高性价比教育，助您在亚洲拓展国际视野。</span>
+                        </p>
+                        <a href="#contact" class="text-blue-600 hover:underline font-medium">
+                            <span data-lang-zh="立即咨询 &rarr;" data-lang-en="Contact Us Now &rarr;">立即咨询 &rarr;</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="py-16 bg-blue-600 text-white">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">
+                    <span data-lang-zh="立即联系我们，开启您的全球之旅！" data-lang-en="Contact Us Now to Start Your Global Journey!">立即联系我们，开启您的全球之旅！</span>
+                </h2>
+                <p class="text-lg mb-8">
+                    <span data-lang-zh="无论您是计划留学、移民还是办理签证，我们专业的团队都将为您提供最优质的服务和支持。" data-lang-en="Whether you are planning to study abroad, immigrate, or apply for a visa, our professional team will provide you with the highest quality service and support.">无论您是计划留学、移民还是办理签证，我们专业的团队都将为您提供最优质的服务和支持。</span>
+                </p>
+                <div class="flex flex-col md:flex-row justify-center items-center gap-4">
+                    <a href="mailto:info@heyoworld.com" class="bg-white text-blue-600 font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 hover:bg-gray-100">
+                        <span data-lang-zh="发送邮件" data-lang-en="Send Email">发送邮件</span>
+                    </a>
+                </div>
+                <p class="mt-8 text-sm opacity-80">
+                    <span data-lang-zh="您也可以通过以下方式找到我们：" data-lang-en="You can also find us at:">您也可以通过以下方式找到我们：</span><br>
+                    <span data-lang-zh="地址：91 Cherry Hinton Rd, Cambridge CB1 7BS, United Kingdom" data-lang-en="Address: 91 Cherry Hinton Rd, Cambridge CB1 7BS, United Kingdom">地址：91 Cherry Hinton Rd, Cambridge CB1 7BS, United Kingdom</span><br>
+                    <span data-lang-zh="邮箱：info@heyoworld.com" data-lang-en="Email: info@heyoworld.com">邮箱：info@heyoworld.com</span>
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-8 px-6 md:px-12">
+        <div class="container mx-auto text-center">
+            <p class="text-lg font-bold mb-2">HeyoWorld</p>
+            <p class="text-sm text-gray-400">
+                <span data-lang-zh="&copy; 2025 HeyoWorld. 版权所有。" data-lang-en="&copy; 2025 HeyoWorld. All rights reserved.">&copy; 2025 HeyoWorld. 版权所有。</span>
+            </p>
+            <div class="flex justify-center space-x-4 mt-4">
+                <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                    <span data-lang-zh="隐私政策" data-lang-en="Privacy Policy">隐私政策</span>
+                </a>
+                <span class="text-gray-400">|</span>
+                <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                    <span data-lang-zh="服务条款" data-lang-en="Terms of Service">服务条款</span>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const closeMobileMenu = document.getElementById('close-mobile-menu');
+            const langToggle = document.getElementById('lang-toggle');
+            const langToggleMobile = document.getElementById('lang-toggle-mobile');
+
+            let currentLang = 'zh'; // Default language
+
+            // Function to update text based on language
+            function updateText(lang) {
+                document.querySelectorAll('[data-lang-zh]').forEach(element => {
+                    if (lang === 'zh') {
+                        element.textContent = element.getAttribute('data-lang-zh');
+                    } else {
+                        element.textContent = element.getAttribute('data-lang-en');
+                    }
+                });
+                // Update title tag separately as it's not a direct textContent of an element with data-lang attribute
+                document.title = document.querySelector('title').getAttribute(`data-lang-${lang}`);
+
+                // Update language toggle button text
+                if (lang === 'zh') {
+                    langToggle.querySelector('span').textContent = 'English';
+                    langToggleMobile.querySelector('span').textContent = 'English';
+                } else {
+                    langToggle.querySelector('span').textContent = '中文';
+                    langToggleMobile.querySelector('span').textContent = '中文';
+                }
+            }
+
+            // Initialize text on load
+            updateText(currentLang);
+
+            // Language toggle functionality
+            function toggleLanguage() {
+                currentLang = currentLang === 'zh' ? 'en' : 'zh';
+                updateText(currentLang);
+            }
+
+            langToggle.addEventListener('click', toggleLanguage);
+            langToggleMobile.addEventListener('click', toggleLanguage);
+
+
+            // Mobile Menu functionality
+            mobileMenuButton.addEventListener('click', function() {
+                mobileMenu.classList.remove('hidden');
+            });
+
+            closeMobileMenu.addEventListener('click', function() {
+                mobileMenu.classList.add('hidden');
+            });
+
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                    // Close mobile menu after clicking a link
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
